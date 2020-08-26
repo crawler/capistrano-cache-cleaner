@@ -4,6 +4,7 @@ require 'time'
 
 namespace :cache do
   namespace :clean do
+    desc 'Tracks last cleanup time and repeat it monthly'
     task :monthly do
       on roles(:app) do
         period = fetch(:cache_clean_period, 2_629_746) # month
@@ -35,7 +36,7 @@ namespace :cache do
       nil
     end
 
-    desc 'remote rake tmp:cache:clear'
+    desc 'Calls rake tmp:cache:clear'
     task :tmp do
       on roles(:app) do
         within release_path do
