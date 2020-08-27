@@ -1,4 +1,14 @@
-# Set of tasks to clean rails cache
+# capistrano-cache-cleaner
+
+# Installation
+
+`gem 'capistrano-cache-cleaner`
+
+In your Capfile:
+
+`require 'capistrano/cache_cleaner.rb'`
+
+# Usage
 
 ### `cap cache:clean:tmp`
 
