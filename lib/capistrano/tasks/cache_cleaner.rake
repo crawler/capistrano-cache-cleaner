@@ -14,7 +14,7 @@ namespace :cache do
         next_clean_on = last_cleaned_on ? last_cleaned_on + period : nil
 
         if next_clean_on && next_clean_on > Time.now.utc
-          output.info "skipping untill #{next_clean_on}"
+          output.info "skipping until #{next_clean_on}"
         else
           output.info 'time to clean'
           invoke 'cache:clean:tmp'
@@ -50,7 +50,7 @@ namespace :cache do
     desc 'Cleans directory with cached pages'
     task :pages do
       on roles(:web) do
-        dir_name = fetch(:chached_pages_dir, 'public/cached_pages')
+        dir_name = fetch(:cached_pages_dir, 'public/cached_pages')
         current_path = File.join(shared_path, dir_name)
         trash_path = File.join(shared_path, "#{dir_name}_trash")
         mv = "mv #{current_path} #{trash_path}"
